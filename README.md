@@ -43,7 +43,9 @@ This documentation provides step-by-step guides and examples for working with An
     
 3. **Create a Dockerfile for the image**
 
-   <img src="images/Untitled(2).png" alt="Dockerfile" width="400"/>
+   <p align="center">
+       <img src="images/Untitled(2).png" alt="Dockerfile" width="400"/>
+   </p>
 
     
 5. **Build the image**
