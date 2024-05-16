@@ -43,21 +43,22 @@ This documentation provides step-by-step guides and examples for working with An
     
 3. **Create a Dockerfile for the image**
 
-    ![Dockerfile](images/Untitled(2).png)
+   <img src="images/Untitled(2).png" alt="Dockerfile" width="400"/>
+
     
-4. **Build the image**
+5. **Build the image**
     
     ```bash
     $ docker build -t ansible-ubuntu-image .
     ```
     
-5. **Create a container using the image**
+6. **Create a container using the image**
     
     ```bash
     $ docker run -itd --name "lab1-server01" ansible-ubuntu-image
     ```
     
-6. **Get the container IP to connect to it**
+7. **Get the container IP to connect to it**
     
     ```bash
     $ docker inspect lab1-server01
@@ -65,18 +66,19 @@ This documentation provides step-by-step guides and examples for working with An
     
     The IP is typically `172.17.0.2`.
     
-7. **Move the public key to the container to activate it for SSH**
+8. **Move the public key to the container to activate it for SSH**
     
     ```bash
     $ ssh-copy-id -i /home/user/.ssh/ansible-key.pub ansible@172.17.0.2
     ```
-    ![Result](images/Untitled(3).png)
+    <img src="images/Untitled(3).png" alt="Result" width="400"/>
     
-8. **Now connect to the container using SSH**
+9. **Now connect to the container using SSH**
     
     ```bash
     $ ssh ansible@172.17.0.2
     ```
+    <img src="images/Untitled(4).png" alt="Result" width="400"/>
 
 ## Practicing Inventory
 
