@@ -2,6 +2,26 @@
 
 This documentation provides step-by-step guides and examples for working with Ansible, covering various topics such as setting up the environment, practicing inventory management, configuration, playbooks, tasks, handlers, roles, and more.
 
+## Table of Contents
+
+1. [Setup Environment](#setup-environment)
+2. [Practicing Inventory](#practicing-inventory)
+3. [Practicing ansible.cfg](#practicing-ansiblecfg)
+4. [Practicing Command Escalation (become)](#practicing-command-escalation-become)
+5. [Practicing Playbook](#practicing-playbook)
+6. [Install Nginx Task](#install-nginx-task)
+7. [Practicing Tags](#practicing-tags)
+8. [Always Tag](#always-tag)
+9. [Practicing Variables](#practicing-variables)
+10. [Practicing Loops](#practicing-loops)
+11. [Practicing When](#practicing-when)
+12. [Practicing Register](#practicing-register)
+13. [Practicing Register & When](#practicing-register--when)
+14. [Practicing Handler](#practicing-handler)
+15. [Practicing Template](#practicing-template)
+16. [Roles Project](#roles-project)
+
+
 ## Setup Environment
 
 1. **Install Ansible on your machine.**
@@ -23,7 +43,7 @@ This documentation provides step-by-step guides and examples for working with An
     
 3. **Create a Dockerfile for the image**
 
-    ![Dockerfile](images/dockerfile.png)
+    ![Dockerfile](images/Untitled(2).png)
     
 4. **Build the image**
     
@@ -50,6 +70,7 @@ This documentation provides step-by-step guides and examples for working with An
     ```bash
     $ ssh-copy-id -i /home/user/.ssh/ansible-key.pub ansible@172.17.0.2
     ```
+    ![Result](images/Untitled(3).png)
     
 8. **Now connect to the container using SSH**
     
