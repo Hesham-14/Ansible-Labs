@@ -44,7 +44,7 @@ This documentation provides step-by-step guides and examples for working with An
 3. **Create a Dockerfile for the image**
 
    <p align="center">
-       <img src="images/Untitled(2).png" alt="Dockerfile" width="400"/>
+       <img src="images/Dockerfile.png" alt="Dockerfile" width="400"/>
    </p>
 
     
@@ -66,85 +66,132 @@ This documentation provides step-by-step guides and examples for working with An
     $ docker inspect lab1-server01
     ```
     
-    The IP is typically `172.17.0.2`.
+    The IP is typically **`172.17.0.2`**.
     
 8. **Move the public key to the container to activate it for SSH**
     
     ```bash
     $ ssh-copy-id -i /home/user/.ssh/ansible-key.pub ansible@172.17.0.2
     ```
-    <img src="images/Untitled(3).png" alt="Result" width="400"/>
+    <p align="center">
+       <img src="images/ssh-copy-id.png" alt="ssh-copy-id" width="400"/>
+   </p>
     
 9. **Now connect to the container using SSH**
     
     ```bash
     $ ssh ansible@172.17.0.2
     ```
-    <img src="images/Untitled(4).png" alt="Result" width="400"/>
+    <p align="center">
+       <img src="images/ssh-result.png" alt="ssh-result" width="400"/>
+   </p>
 
 ## Practicing Inventory
 
 1. **Create an inventory file that contains all the IPs in your environment.**
     
-    ![Inventory File](images/inventory.png)
+    <p align="center">
+       <img src="images/inventory.png" alt="inventory" width="300"/>
+   </p>
     
 2. **Ping all the servers using the following command.**
     
     ```bash
     $ ansible all -i ./inventory --private-key /home/h-test/.ssh/ansible-key -u ansible -m ping
     ```
+    <p align="center">
+       <img src="images/ping-result-01.png" alt="ping-result-01" width="400"/>
+   </p>
 
 ## Practicing ansible.cfg
 
 1. **Write your config file**
 
-    ![Ansible Config](images/ansible-cfg.png)
+    <p align="center">
+       <img src="images/ansible-cfg.png" alt="ansible-cfg" width="400"/>
+   </p>
     
 2. **Now ping the web servers only for example.**
     
     ```bash
     $ ansible webservers -m ping
     ```
+    <p align="center">
+       <img src="images/ping-result-02.png" alt="ping-result-02" width="400"/>
+   </p>
 
 ## Practicing Command Escalation (become)
 
-If a sudo command requires a password, use `become`.
+If we tried to execute a sudo command that requires a password to has it’s execution privilege. 
+Ansible will response with an error.
+
+```bash
+$ ansible webservers -m command -a "sudo touch /etc/shadow"
+```
+
+It will cause a runtime error.
+
+So we need to tell ansible that you are going to need the root password, and this gets done using **`become`** 
+
+**To do so, we need to activate the become and password asking either in terminal.**
 
 ```bash
 $ ansible webservers -m command --ask-become-pass -b -a "sudo touch /etc/shadow"
 ```
 
+or in **`ansible.cfg`**
+<p align="center">
+    <img src="images/ansible-cfg-become.png" alt="ansible-cfg-become" width="400"/>
+</p>
+
 ## Practicing Playbook
 
 1. **Write your playbook file in .yml**
 
-    ![Playbook File](images/playbook.png)
+   <p align="center">
+       <img src="images/playbook.png" alt="playbook" width="300"/>
+   </p>
     
 2. **Execute the following command**
     
     ```bash
     $ ansible-playbook pinging-playbook.yml
     ```
+    <p align="center">
+       <img src="images/playbook-result-01.png" alt="playbook-result-01" width="500"/>
+   </p>
 
 ## Install Nginx Task
+📢 **Task**
+
+    - Update cache
+    - Install latest nginx
+    - Copy index.html from controller to server01
+    - Restart nginx service
+    - Can you see your index.html file when you hit server01 on port 80 ?
+    
 
 1. **Write a simple index.html file**
     
-    ![index.html](images/index-html.png)
+    <p align="center">
+       <img src="images/index-html.png" alt="index-html" width="400"/>
+   </p>
     
 2. **Write your playbook file**
     
-    ![Install Nginx Playbook](images/install-nginx-playbook.png)
+    <p align="center">
+       <img src="images/nginx-task-playbook.png" alt="nginx-task-playbook" width="400"/>
+   </p>
 
-    1. **Execute the following command**
+3. **Execute the following command**
         
-        ```bash
-        $ ansible-playbook pinging-playbook.yml
-        ```
+    ```bash
+    $ ansible-playbook pinging-playbook.yml
+    ```
         
-    2. **Hit nginx**
+4. **Hit nginx**
         
-        Expose nginx port on the host by restarting the container and modifying the container networking.
+    Expose nginx port on the host by restarting the container and modifying the container networking.
 
 ## Practicing Tags
 
