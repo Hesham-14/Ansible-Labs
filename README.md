@@ -179,7 +179,7 @@ or in **`ansible.cfg`**
     
 2. **Write your playbook file**
     
-    <p align="center">
+   <p align="center">
        <img src="images/nginx-task-playbook.png" alt="nginx-task-playbook" width="400"/>
    </p>
 
@@ -197,7 +197,10 @@ or in **`ansible.cfg`**
 
 1. **Write your tags-playbook file**
     
-    ![Tags Playbook](images/tags-playbook.png)
+   <p align="center">
+       <img src="images/tags.png" alt="tags" width="300"/>
+   </p>
+
     
 2. **Execute the following command**
     
@@ -209,17 +212,28 @@ or in **`ansible.cfg`**
 
 Using `always` tag ensures the associated task is executed regardless.
 
-![Always Tag](images/always-tag.png)
+<p align="center">
+    <img src="images/always-tags.png" alt="always-tags" width="300"/>
+</p>
 
 ## Practicing Variables
 
-1. **Specify variables in the playbook file directly or in a separate variables.yml file.**
 
-    ![Variables Playbook](images/variables-playbook.png)
+1. **you can specify your variables in the playbook file directly, as following..** 
 
-    ![Variables YML](images/variables-yml.png)
+    <p align="center">
+        <img src="images/vairables.png" alt="vairables" width="300"/>
+    </p>
+    
+2. **Or write them in a separate variables.yml file. and refer to them in the playbook file.**
 
-    Execute using:
+   <div style="display: flex; justify-content: center;">
+        <img src="images/variables(2).png" alt="variables(2)" width="250"/>
+        <img src="images/variables(3).png" alt="variables(3)" width="200"/>
+    </div>
+
+
+ 3. **Execute the following command**
     
     ```bash
     $ ansible-playbook variables-playbook.yml
@@ -229,9 +243,21 @@ Using `always` tag ensures the associated task is executed regardless.
 
 1. **Write your loops-playbook file**
 
-    ![Loops Playbook](images/loops-playbook.png)
+    <p align="center">
+        <img src="images/loops.png" alt="loops" width="300"/>
+    </p>
 
-    Execute using:
+    You also can add multiple attributes to the loop item, as following..
+    <p align="center">
+        <img src="images/loops(2).png" alt="loops(2)" width="300"/>
+    </p>
+
+    Also you can store the item values as a variables, as following..
+    <p align="center">
+        <img src="images/loops(3).png" alt="loops(3)" width="300"/>
+    </p>
+
+2. **Execute the following command**
     
     ```bash
     $ ansible-playbook loops-playbook.yml
@@ -241,25 +267,35 @@ Using `always` tag ensures the associated task is executed regardless.
 
 1. **Write your when-playbook file**
 
-    ![When Playbook](images/when-playbook.png)
+    <p align="center">
+        <img src="images/when.png" alt="when" width="300"/>
+    </p>
 
     Execute using:
     
     ```bash
     $ ansible-playbook when-playbook.yml
     ```
+    <p align="center">
+        <img src="images/when-result.png" alt="when-result" width="400"/>
+    </p>
 
 ## Practicing Register
 
 1. **Write your register-playbook file**
     
-    ![Register Playbook](images/register-playbook.png)
+    !<p align="center">
+        <img src="images/register.png" alt="register" width="300"/>
+    </p>
 
     Execute using:
     
     ```bash
     $ ansible-playbook register-playbook.yml
     ```
+    <p align="center">
+        <img src="images/register-result.png" alt="register-result" width="600"/>
+    </p>
 
 ## Practicing Register & When
 
